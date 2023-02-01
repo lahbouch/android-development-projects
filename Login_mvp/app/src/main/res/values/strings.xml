@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Login_mvp</string>
+    <string name="welcome">Welcome %s</string>
 </resources>
