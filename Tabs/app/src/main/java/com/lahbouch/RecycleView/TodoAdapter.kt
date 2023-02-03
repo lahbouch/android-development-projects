@@ -3,6 +3,9 @@ package com.lahbouch.RecycleView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.zip.Inflater
 
@@ -20,7 +23,12 @@ class TodoAdapter(val data : MutableList<Todo>) : RecyclerView.Adapter<TodoAdapt
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
 
-        TODO("IMPLEMENTING ON bIND")
+        val title = holder.itemView.findViewById<TextView>(R.id.tvTitle)
+        val checkBox = holder.itemView.findViewById<CheckBox>(R.id.cbDone)
+
+        title.text = data[position].title
+        checkBox.isChecked = data[position].isChecked
+
     }
 
     override fun getItemCount(): Int {
