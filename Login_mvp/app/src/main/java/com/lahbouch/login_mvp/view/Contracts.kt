@@ -4,7 +4,10 @@ import com.lahbouch.login_mvp.model.User
 
 interface Contracts {
     interface IMainActivity{
-        fun update(u : User)
+
+        fun authenticated(u : User?)
+        fun errorEmail(error : String)
+        fun errorPwd(error : String)
     }
 
 }

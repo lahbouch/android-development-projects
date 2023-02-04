@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.lahbouch.login_mvp.R
 import com.lahbouch.login_mvp.model.User
 import com.lahbouch.login_mvp.presenter.MainActivityPresenter
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() , Contracts.IMainActivity {
             val email  = editText_email.text.toString()
             val password = editText_password.text.toString()
 
-            presenter.login(email,password)
+            presenter.onLoginClick(email,password)
 
 
         }
@@ -37,8 +38,17 @@ class MainActivity : AppCompatActivity() , Contracts.IMainActivity {
 
     }
 
-    override fun update(u: User) {
+    override fun authenticated(u: User?) {
         val intent = Intent(this,HomeActivity::class.java)
+        intent.putExtra("email",u?.email)
         startActivity(intent)
+    }
+
+    override fun errorEmail(error : String) {
+        Toast.makeText(this,error,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun errorPwd(error: String) {
+        Toast.makeText(this,error,Toast.LENGTH_SHORT).show()
     }
 }

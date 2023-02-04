@@ -4,6 +4,6 @@ import android.app.Person
 
 interface Contracts{
     interface IMainActivityPresenter {
-        fun login(email : String,password : String)
+        fun onLoginClick(email : String,password : String)
     }
 }
