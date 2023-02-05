@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/password"
-            android:inputType="textWebEmailAddress|textEmailAddress"
+            android:inputType="textPassword"
             android:minHeight="48dp"
             android:importantForAutofill="no" />
 
