@@ -6,6 +6,10 @@ import android.media.MediaPlayer
 import android.os.IBinder
 import android.provider.Settings
 import android.widget.Toast
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MyService : Service() {
 
@@ -26,7 +30,7 @@ class MyService : Service() {
 
     override fun onDestroy() {
         Toast.makeText(applicationContext, "Destroy", Toast.LENGTH_SHORT).show()
-        mp.stop()
+mp.stop()
         super.onDestroy()
     }
 
