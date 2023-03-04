@@ -3,11 +3,11 @@ package com.lahbouch.infoscities.model
 import com.lahbouch.infoscities.R
 
 data class Country(
-    val name : String,
-    val citys : MutableList<City>
-){
-    companion object{
-        val country_dz : MutableList<City> = mutableListOf(
+    val name: String,
+    val citys: MutableList<City>
+) {
+    companion object {
+        val country_dz: MutableList<City> = mutableListOf(
             City(
                 R.drawable.oran,
                 R.string.oranCityName,
@@ -15,7 +15,8 @@ data class Country(
                 R.string.oranFullDesc,
                 R.string.oranWebsite,
                 R.string.oranHabitans
-            ),City(
+            ),
+            City(
                 R.drawable.alger,
                 R.string.algerCityName,
                 R.string.algerSmallDesc,
@@ -41,7 +42,8 @@ data class Country(
                 R.string.casablancaFullDesc,
                 R.string.casablancaWebsite,
                 R.string.casablancaHabitans
-            ))
+            )
+        )
 
     }
 

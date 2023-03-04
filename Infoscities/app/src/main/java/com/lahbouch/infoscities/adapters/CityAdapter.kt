@@ -55,9 +55,7 @@ class CityAdapter(val data : MutableList<City>) : RecyclerView.Adapter<RecyclerV
                 putExtra("fullDesc",cityFullDesc)
                 putExtra("website",cityWebSite)
             }
-
             holder.itemView.context.startActivity(intent)
-
         }
 
     }

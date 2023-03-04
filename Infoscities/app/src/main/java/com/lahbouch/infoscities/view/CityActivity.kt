@@ -13,18 +13,18 @@ import com.lahbouch.infoscities.adapters.CityAdapter
 import com.lahbouch.infoscities.model.Country
 import com.lahbouch.infoscities.viewModel.CityViewModel
 
-class CityActivity : AppCompatActivity() , Contracts.CityContract {
+class CityActivity : AppCompatActivity(), Contracts.CityContract {
 
-    lateinit var viewPager : ViewPager2
-    lateinit var err_layout : View
+    lateinit var viewPager: ViewPager2
+    lateinit var err_layout: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city)
-supportActionBar?.apply {
-    setBackgroundDrawable(ColorDrawable(getColor(R.color.black)))
-    setElevation(0F)
-}
+        supportActionBar?.apply {
+            setBackgroundDrawable(ColorDrawable(getColor(R.color.black)))
+            setElevation(0F)
+        }
         viewPager = findViewById(R.id.cityViewPager)
         err_layout = findViewById(R.id.errorLayout)
         val country_name = intent.getStringExtra("contry")
@@ -33,9 +33,6 @@ supportActionBar?.apply {
         if (country_name != null) {
             vm.onStart(country_name)
         }
-
-
-
 
 
     }

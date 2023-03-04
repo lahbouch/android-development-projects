@@ -15,11 +15,10 @@ import com.lahbouch.infoscities.adapters.FragementAdapter
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
-class HomeActivity : AppCompatActivity() , Contracts.HomeContract{
+class HomeActivity : AppCompatActivity(), Contracts.HomeContract {
 
-    lateinit var tab_layout : TabLayout
-    lateinit var view_pager : ViewPager2
-
+    lateinit var tab_layout: TabLayout
+    lateinit var view_pager: ViewPager2
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,26 +32,32 @@ class HomeActivity : AppCompatActivity() , Contracts.HomeContract{
         val frgAdapter = FragementAdapter(this)
         view_pager.adapter = frgAdapter
 
-        TabLayoutMediator(tab_layout,view_pager) { tab, position ->
-        tab.text = FragementAdapter.tabs[position]
+        TabLayoutMediator(tab_layout, view_pager) { tab, position ->
+            tab.text = FragementAdapter.tabs[position]
         }.attach()
     }
 
-    override fun showToast(title : String,msg: String) {
+    override fun showToast(title: String, msg: String) {
 //        Motion
         MotionToast.setInfoBackgroundColor(R.color.black)
         MotionToast.setInfoColor(R.color.bg_info)
-
-    MotionToast.createColorToast(this,title,msg,MotionToastStyle.INFO,MotionToast.GRAVITY_BOTTOM,MotionToast.LONG_DURATION,ResourcesCompat.getFont(this,R.font.normal))
+        MotionToast.createColorToast(
+            this,
+            title,
+            msg,
+            MotionToastStyle.INFO,
+            MotionToast.GRAVITY_BOTTOM,
+            MotionToast.LONG_DURATION,
+            ResourcesCompat.getFont(this, R.font.normal)
+        )
 //        Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
     }
 
-    override fun startMainActivty(email:String) {
-        val intent = Intent(this,MainActivity::class.java)
-        intent.putExtra("email",email)
+    override fun startMainActivty(email: String) {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("email", email)
         startActivity(intent)
     }
-
 
 
 }

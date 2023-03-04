@@ -7,20 +7,29 @@ import com.lahbouch.infoscities.repository.UserRepository
 import com.lahbouch.infoscities.view.CityActivity
 import com.lahbouch.infoscities.view.HomeActivity
 
-class HomeViewModel(val view : com.lahbouch.infoscities.view.Contracts.HomeContract) : Contracts.IHomeViewModel {
+class HomeViewModel(val view: com.lahbouch.infoscities.view.Contracts.HomeContract) :
+    Contracts.IHomeViewModel {
 
 
-
-     private val ERROR_MSG = "error de saisie!"
-     private val ONSUCCES = "compte cree avec success"
-
+    private val ERROR_MSG = "error de saisie!"
+    private val ONSUCCES = "compte cree avec success"
     private val USER_ALREADY_EXISTS = "ce compte est deja exists!"
     private val NO_USER_EXISTS = "no compte exists!"
-     private val EMAIL_PATTERN : Regex = Regex("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))\$")
+
+    private val EMAIL_PATTERN: Regex =
+        Regex("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))\$")
+
+
     private val userRepo = UserRepository()
 
 
     private val PWD_MIN_LENGTH = 8
+
+    fun String.salam(sal : (tr : String)->Boolean) : Boolean{
+        return sal(this)
+    }
+
+
 
 
     fun emailValidator(email : String) : Boolean{
@@ -33,7 +42,7 @@ class HomeViewModel(val view : com.lahbouch.infoscities.view.Contracts.HomeContr
         return EMAIL_VALIDATORS.contains(true)
     }
 
-    fun pwdValidator(pwd : String) : Boolean{
+    fun pwdValidator(pwd: String): Boolean {
         val PWD_VALIDATORS = mutableListOf(
             pwd.trim().length < PWD_MIN_LENGTH
         )
@@ -42,13 +51,13 @@ class HomeViewModel(val view : com.lahbouch.infoscities.view.Contracts.HomeContr
 
     override fun onConnectClick(email: String, pwd: String) {
 
-        if (emailValidator(email) || pwdValidator(pwd)){
-            view.showToast("ERROR_MSG",ERROR_MSG)
+        if (emailValidator(email) || pwdValidator(pwd)) {
+            view.showToast("ERROR_MSG", ERROR_MSG)
             return
         }
 
-        if (userRepo.getUser(email,pwd) == null){
-            view.showToast("NO_USER_EXISTS",NO_USER_EXISTS)
+        if (userRepo.getUser(email, pwd) == null) {
+            view.showToast("NO_USER_EXISTS", NO_USER_EXISTS)
             return
         }
 
@@ -58,19 +67,16 @@ class HomeViewModel(val view : com.lahbouch.infoscities.view.Contracts.HomeContr
 
     override fun onSincrireClick(email: String, pwd: String) {
 
-        if ( emailValidator(email)|| pwdValidator(pwd) ){
-            view.showToast("ERROR_MSG",ERROR_MSG)
+        if (emailValidator(email) || pwdValidator(pwd)) {
+            view.showToast("ERROR_MSG", ERROR_MSG)
             return
         }
 
-        if (!userRepo.addUser(email,pwd)){
-            view.showToast("USER_ALREADY_EXISTS",USER_ALREADY_EXISTS)
+        if (!userRepo.addUser(email, pwd)) {
+            view.showToast("USER_ALREADY_EXISTS", USER_ALREADY_EXISTS)
             return
         }
-
-        view.showToast("SUCCES",ONSUCCES)
-
-
+        view.showToast("SUCCES", ONSUCCES)
     }
 
 
