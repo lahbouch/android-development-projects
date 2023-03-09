@@ -14,8 +14,8 @@ import com.lahbouch.infoscities.view.HomeActivity
 import com.lahbouch.infoscities.viewModel.HomeViewModel
 
 
-class SignUpFragment(val activity : Contracts.HomeContract) : Fragment(R.layout.fragment_sign_up) {
-
+class SignUpFragment() : Fragment(R.layout.fragment_sign_up) {
+     var activity : Contracts.HomeContract? = null
     lateinit var et_signup_email : EditText
     lateinit var et_signup_pwd : EditText
     lateinit var btn_signup : Button

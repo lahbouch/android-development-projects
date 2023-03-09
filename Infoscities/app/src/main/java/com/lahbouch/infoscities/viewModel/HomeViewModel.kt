@@ -1,13 +1,14 @@
 package com.lahbouch.infoscities.viewModel
 
 import android.content.Intent
+import android.view.ViewParent
 import android.widget.Toast
 import com.lahbouch.infoscities.model.User
 import com.lahbouch.infoscities.repository.UserRepository
 import com.lahbouch.infoscities.view.CityActivity
 import com.lahbouch.infoscities.view.HomeActivity
 
-class HomeViewModel(val view: com.lahbouch.infoscities.view.Contracts.HomeContract) :
+class HomeViewModel(val view: com.lahbouch.infoscities.view.Contracts.HomeContract?) :
     Contracts.IHomeViewModel {
 
 
@@ -25,9 +26,6 @@ class HomeViewModel(val view: com.lahbouch.infoscities.view.Contracts.HomeContra
 
     private val PWD_MIN_LENGTH = 8
 
-    fun String.salam(sal : (tr : String)->Boolean) : Boolean{
-        return sal(this)
-    }
 
 
 
@@ -52,31 +50,31 @@ class HomeViewModel(val view: com.lahbouch.infoscities.view.Contracts.HomeContra
     override fun onConnectClick(email: String, pwd: String) {
 
         if (emailValidator(email) || pwdValidator(pwd)) {
-            view.showToast("ERROR_MSG", ERROR_MSG)
+            view!!.showToast("ERROR_MSG", ERROR_MSG)
             return
         }
 
         if (userRepo.getUser(email, pwd) == null) {
-            view.showToast("NO_USER_EXISTS", NO_USER_EXISTS)
+            view!!.showToast("NO_USER_EXISTS", NO_USER_EXISTS)
             return
         }
 
 
-        view.startMainActivty(email)
+        view!!.startMainActivty(email)
     }
 
     override fun onSincrireClick(email: String, pwd: String) {
 
         if (emailValidator(email) || pwdValidator(pwd)) {
-            view.showToast("ERROR_MSG", ERROR_MSG)
+            view!!.showToast("ERROR_MSG", ERROR_MSG)
             return
         }
 
         if (!userRepo.addUser(email, pwd)) {
-            view.showToast("USER_ALREADY_EXISTS", USER_ALREADY_EXISTS)
+            view!!.showToast("USER_ALREADY_EXISTS", USER_ALREADY_EXISTS)
             return
         }
-        view.showToast("SUCCES", ONSUCCES)
+        view!!.showToast("SUCCES", ONSUCCES)
     }
 
 

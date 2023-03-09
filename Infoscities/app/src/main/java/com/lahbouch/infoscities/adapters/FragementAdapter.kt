@@ -7,7 +7,7 @@ import com.lahbouch.infoscities.view.Contracts
 import com.lahbouch.infoscities.view.fragments.LoginFragment
 import com.lahbouch.infoscities.view.fragments.SignUpFragment
 
-class FragementAdapter(val activity : FragmentActivity) : FragmentStateAdapter(activity) {
+class FragementAdapter(activity : FragmentActivity) : FragmentStateAdapter(activity) {
 
      companion object{
          val tabs = mutableListOf("Connecter","S'inscrire")
@@ -19,9 +19,15 @@ class FragementAdapter(val activity : FragmentActivity) : FragmentStateAdapter(a
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
-            0 -> LoginFragment(activity as Contracts.HomeContract)
-            1 -> SignUpFragment(activity as Contracts.HomeContract)
-            else -> LoginFragment(activity as Contracts.HomeContract)
+            0 -> LoginFragment().apply {
+                this.activity = activity
+            }
+            1 -> SignUpFragment().apply {
+                this.activity = activity
+            }
+            else -> LoginFragment().apply {
+                this.activity = activity
+            }
         }
     }
 }

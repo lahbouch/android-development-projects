@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">List view demo</string>
+    <string-array name="menu1">
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+    </string-array>
+
+
+    <string-array name="menu2">
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item><item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item><item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item><item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+    </string-array>
+</resources>
