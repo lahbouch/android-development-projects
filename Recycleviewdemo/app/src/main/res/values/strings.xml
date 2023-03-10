@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Recycleviewdemo</string>
+    <string name="enter_first_name_hint">First name</string>
+    <string name="enter_last_name_hint">Last name</string>
+
+    <string-array name="nationalites">
+        <item>Moroccan</item>
+        <item>American</item>
+        <item>Canadian</item>
+    </string-array>
+
+
+</resources>
