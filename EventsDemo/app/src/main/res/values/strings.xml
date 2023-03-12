@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EventsDemo</string>
+    <string-array name="spinner">
+        <item>Select Action</item>
+        <item>Home</item>
+        <item>Contact</item>
+        <item>About</item>
+    </string-array>
+</resources>
