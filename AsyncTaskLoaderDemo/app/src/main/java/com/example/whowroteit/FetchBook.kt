@@ -26,6 +26,11 @@ class FetchBook(mTitleText : TextView ,  mAuteurText : TextView,mThumbnailImg : 
         return NetworkUtils.getBookInfo(params.get(0))
     }
 
+    override fun onPreExecute() {
+        mTitleText.get()?.setText(R.string.loading)
+        mTitleText.get()?.visibility = View.VISIBLE
+    }
+
     override fun onPostExecute(result: String?) {
         super.onPostExecute(result)
         try {

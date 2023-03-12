@@ -1,8 +1,11 @@
 package com.example.whowroteit
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.asynctaskloaderdemo.R
 
 class MainActivity : AppCompatActivity() {
@@ -23,16 +26,25 @@ class MainActivity : AppCompatActivity() {
         mThumbnailImg = findViewById(R.id.thumbnail)
 
         mSearchBtn.setOnClickListener {
-            searchBooks()
+            searchBooks(it)
         }
 
     }
 
-    private fun searchBooks() {
+    private fun searchBooks(view : View) {
         val q = mBookInput.text.toString()
         if (q.isEmpty()){
             Toast.makeText(this, "enter a book name", Toast.LENGTH_SHORT).show()
             return
+        }
+        val inputManager: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        if (inputManager != null) {
+            inputManager.hideSoftInputFromWindow(
+                view.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
         }
         FetchBook(mTitleText,mAuteurText,mThumbnailImg).execute(q)
     }
