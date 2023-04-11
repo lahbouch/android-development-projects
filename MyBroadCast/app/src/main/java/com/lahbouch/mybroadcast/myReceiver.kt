@@ -9,24 +9,28 @@ import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.*
 
-class myReceiver(val view : MainActivity) : BroadcastReceiver() {
+class myReceiver() : BroadcastReceiver() {
+
+
+
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
-        makeText(context, "triggerd", LENGTH_SHORT).show()
         val action = intent?.action
         val isEnabled = intent?.getBooleanExtra("state",false)
-        val mp = MediaPlayer.create(context,Settings.System.DEFAULT_RINGTONE_URI)
+
 
         if (action == Intent.ACTION_AIRPLANE_MODE_CHANGED){
 
             if (isEnabled == true){
-                view.setBgColor(android.R.color.holo_green_dark)
-//                mp.start()
+//                view.setBgColor(android.R.color.holo_green_dark)
+                makeText(context, "enabled", LENGTH_SHORT).show()
+//
             }else{
-                view.setBgColor(android.R.color.holo_red_dark)
-                mp.stop()
+//                view.setBgColor(android.R.color.holo_red_dark)
+                makeText(context, "disabled", LENGTH_SHORT).show()
+
             }
         }
     }

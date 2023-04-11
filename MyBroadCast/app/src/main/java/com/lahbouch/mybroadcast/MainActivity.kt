@@ -16,9 +16,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        myReceiver = myReceiver(this)
         myLayout = findViewById(R.id.test)
+
+
+        myReceiver = myReceiver()
+
+
+     
+
         myIntentFilter = IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED)
         registerReceiver(myReceiver,myIntentFilter)
 

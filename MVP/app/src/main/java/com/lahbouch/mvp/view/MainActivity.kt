@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.lahbouch.mvp.Person
 import com.lahbouch.mvp.R
 import com.lahbouch.mvp.presenter.IMainPresenter
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() , MainPresenter.IView {
 
     override fun updateResult(p: Person) {
         textViewResult.text = "name : ${p.name}, age : ${p.age}"
+    }
+
+    override fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
 
